@@ -1,0 +1,80 @@
+ion-content {
+    --background: rgb(62, 97, 219);
+    --background: linear-gradient(180deg, rgba(62, 97, 219, 1) 11%, rgba(84, 133, 226, 1) 41%, rgba(92, 145, 230, 1) 69%, rgba(102, 160, 231, 1) 91%);
+}
+
+.wrapper {
+    position: relative;
+
+    .place {
+        margin-top: 60px;
+
+        .label1 {
+            font-family: "Mont-Bold";
+            font-size: 3rem;
+            color: #F2f2F2;
+        }
+
+        .label2 {
+            font-family: "Mont-Light";
+            font-size: 1.2rem;
+            color: #F2f2F2;
+            font-weight: 600;
+        }
+    }
+
+    .temp1 {
+
+        // background-color: aqua;
+        h1 {
+            font-family: "Poppins-Bold";
+            font-size: 6rem;
+            color: #F2f2F2;
+            margin: 0;
+        }
+    }
+    // .snow1{
+    //     position: absolute;
+    //     width: 400px;
+    //     background-color: aqua;
+    //     z-index: 0;
+    //     ion-img{
+    //         width: 100%;
+    //         height: 100%;
+    //         object-fit: cover;
+    //     }
+    // }
+    .moon1 {
+        position: absolute;
+        // background-color: bisque;
+        width: 206px;
+        height: 253px;
+        left: 20%;
+        top: 191px;
+        
+        // transform: rotate(180deg);
+        // transform: scaleX(-1);
+
+        ion-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+        }
+    }
+    .details{
+        display: flex;
+        justify-content: center;
+        .card{
+            background-color: #093075;
+            border-radius: 15px 20px 10px 5px;
+            width: 67px;
+            padding: 10px;
+            ion-img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}
