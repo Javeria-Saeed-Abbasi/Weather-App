@@ -1,13 +1,22 @@
+ion-toolbar{
+    --background: rgb(62, 97, 219);
+     --border:none;
+     --color:white;
+     text-align: center;
+
+}
+
 ion-content {
     --background: rgb(62, 97, 219);
     --background: linear-gradient(180deg, rgba(62, 97, 219, 1) 11%, rgba(84, 133, 226, 1) 41%, rgba(92, 145, 230, 1) 69%, rgba(102, 160, 231, 1) 91%);
 }
 
+
 .wrapper {
     position: relative;
 
     .place {
-        margin-top: 60px;
+        // margin-top: 60px;
 
         .label1 {
             font-family: "Mont-Bold";
@@ -131,35 +140,35 @@ ion-content {
             }
         }
     }
-    .week, .new-swiper-slider{
-        .card{
-            background-color: #F2f2F2;
-            border-radius: 300px;
-            display: flex;
-            flex-wrap: wrap;
-            height: 139px;
-            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;            .week-icon{
-                width: 66px;
-                height: 53px;
-                margin: 0 auto;
+//     .week, .new-swiper-slider{
+//         .card{
+//             background-color: #F2f2F2;
+//             border-radius: 300px;
+//             display: flex;
+//             flex-wrap: wrap;
+//             height: 149px;
+//             box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;            
+//             .week-icon{
+//                 width: 66px;
+//                 height: 53px;
+//                 margin: 0 auto;
                 
-            }
-            ion-img{
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-            p{
-            text-align: center;
-            width: 100%;
-            font-weight: 600;
-            color: darkgray;
-            }
-        }
-    }
-    .new-swiper-slider{
-        background-color: aqua;
-    }
+//             }
+//             ion-img{
+//                 width: 100%;
+//                 height: 100%;
+//                 object-fit: cover;
+//             }
+//             p{
+//             text-align: center;
+//             width: 100%;
+//             font-weight: 600;
+//             color: darkgray;
+//             margin-top: 13px;
+// }
+//             }
+//         }
+
 
 
 }

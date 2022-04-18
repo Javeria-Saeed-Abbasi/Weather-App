@@ -1,22 +1,146 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>next-days</ion-title>
+  
+  <ion-toolbar color="">
+    <ion-buttons slot="secondary">
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="main">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button color="">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Next 7 days</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 <div class="container">
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <div class="ion-activatable ripple-parent">
-          <ion-icon routerLink="/next-days" name="chevron-back-outline" class="ion-justify-content-center" ></ion-icon>
-          <ion-ripple-effect></ion-ripple-effect>
-        </div>
-      </ion-col>
-      <ion-col></ion-col>
-      <ion-col></ion-col>
-    </ion-row>
-  </ion-grid>
+  <div class="container week">
+    <div class="new-swiper-slider">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="1">
+            <span class="slider-nav arrow-prev" (click)="slidePrev(sliderTwo,slideWithNav2)">
+              <div class="prev-icon-custom custon-nav" [class.disabled]="sliderTwo.isBeginningSlide"></div>
+            </span>
+          </ion-col>
+          <ion-col size="12">
+
+            <ion-slides pager="false" [options]="slideOptsTwo" #slideWithNav2
+              (ionSlideDidChange)="SlideDidChange(sliderTwo,slideWithNav2)">
+              <ion-slide *ngFor="let s of sliderTwo.slidesItems">
+                <div class="card">
+                  <div class="week-icon">
+                    <!-- {{s.id}} -->
+                    <ion-img src="{{s.img}}" alt=""></ion-img>
+                  </div>
+                  <p class="date">23</p>
+                  <p class="day">Mon</p>
+                </div>
+
+              </ion-slide>
+            </ion-slides>
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </div>
+  </div>
+  <div class="wrap1">
+    <div class="blue"></div>
+    <div class="container light-blue">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="cloud ion-text-center">
+            <ion-img src="../../../assets/icons/sun/8.png"></ion-img>
+            <div>
+              <ion-text class="weather"> <h3>Heavy Rain</h3> </ion-text>
+              <ion-text class="pred"> <p>Tonight</p> </ion-text>
+            </div>
+           
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="temp2 ion-text-center">
+            <h1>28<span>&#176;</span></h1>
+            <span>Feels like 32<span>&#176;</span></span>
+            <div class="haze">
+              <ion-img src="../../../assets/icons/cloud/5.png"></ion-img>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div class="container details">
+      <ion-grid>
+        <ion-row class="">
+          <ion-col>
+            <div class="card">
+              <ion-img src="../../../assets/icons/moon/rain1.png" class="card-img-top" alt="..."></ion-img>
+              <div class="ion-margin-top">
+                <ion-text class="">28%</ion-text>
+              </div>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="card card2-img">
+              <ion-img src="../../../assets/icons/sun/sun1.png" class="card-img-top" alt="..."></ion-img>
+              <div class="ion-margin-top">
+                <ion-text class="">8km/h</ion-text>
+              </div>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="card">
+              <ion-img src="../../../assets/icons/moon/moon3.png" class="card-img-top" alt="..."></ion-img>
+              <div class="ion-margin-top">
+                <ion-text class="">64%</ion-text>
+              </div>
+            </div>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </div>
+    </div>
+    <div class="light-blue2">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="3">
+              <div class="tom-weather">
+                <ion-img src="../../../assets/icons/cloud/12.png"></ion-img>
+            </div>
+          </ion-col>
+          <ion-col size="6">
+              <div class="ion-padding-horizontal ion-text-center">
+                <ion-text>
+                  <h3>Cloudy</h3>
+                </ion-text>
+                <ion-text><span class="date1">29Sep, <span class="day1">Tuesday</span></span>                  
+                </ion-text>
+                <ion-text class="temp3"> <p>17/22<span>&#176;</span></p> </ion-text>
+              </div>
+          </ion-col>
+          <ion-col size="3">
+            <div class="">
+              <ion-button shape="circle">
+                <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>
+              </ion-button>  
+            </div>
+                   
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+ 
+ 
+
+  
 </div>
 </ion-content>

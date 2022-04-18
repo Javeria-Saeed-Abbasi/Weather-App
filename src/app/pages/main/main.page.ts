@@ -6,6 +6,7 @@ import { IonSlides } from '@ionic/angular';
   selector: 'app-main',
   templateUrl: './main.page.html',
   styleUrls: ['./main.page.scss'],
+  
 })
 export class MainPage implements OnInit {
   @ViewChild('slideWithNav', { static: false }) slideWithNav: IonSlides;
@@ -19,15 +20,15 @@ export class MainPage implements OnInit {
   //Configuration for each Slider
 
   slideOptsTwo = {
-    initialSlide: 1,
-    slidesPerView: 4,
+    initialSlide:1,
+    slidesPerView:4,
     loop: true,
     centeredSlides: true,
     spaceBetween: 10,
     autoplay: true,
   };
  
-
+  
   constructor() {
   //Item object for Food
   this.sliderTwo =
@@ -36,20 +37,33 @@ export class MainPage implements OnInit {
     isEndSlide: false,
     slidesItems: [
       {
-        id: 324
+        id: 324,
+        img: "assets/icons/sun/sun1.png",
       },
       {
-        id: 321
+        id: 321,
+        img: "assets/icons/cloud/22.png"
       },
       {
-        id: 435
+        id: 435,
+        img: "assets/icons/sun/27.png"
       },
       {
-        id: 524
+        id: 524,
+        img: "assets/icons/sun/26.png"
       },
       {
-        id: 235
-      }
+        id: 523,
+        img: "assets/icons/moon/moon3.png"
+      },
+      {
+        id: 523,
+        img: "assets/icons/sun/27.png"
+      },
+      {
+        id: 523,
+        img: "assets/icons/sun/sun1.png"
+      },
     ]
   };
    }

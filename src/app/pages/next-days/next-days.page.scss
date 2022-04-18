@@ -1,4 +1,208 @@
+ion-toolbar{
+    --background: rgb(62, 97, 219);
+     --border:0px;
+     --color:white;
+     text-align: center;
+     ion-back-button {
+        font-family: "Mont-Light";
+        color:rgb(62, 97, 219);
+        width: 40px;
+        height: 35px;
+        border-radius: 10px;
+        background-color: #F2f2F2;
+        margin-left: 10px;
+    }
+   ion-icon{
+       --color:white;
+   }
+
+}
 ion-content {
     --background: rgb(62, 97, 219);
     --background: linear-gradient(180deg, rgba(62, 97, 219, 1) 11%, rgba(84, 133, 226, 1) 41%, rgba(92, 145, 230, 1) 69%, rgba(102, 160, 231, 1) 91%);
+.container{
+    .wrap1{
+        display: flex;
+        justify-content: center;
+        position: relative;
+        .blue{
+            position: absolute;
+            width: 100%;
+            height: 400px;
+            background-color: #0f4cbd;
+            border-radius:83px 81px 0px 0px;
+            top: 239px;
+        }
+        .light-blue{ 
+            position: absolute;
+            width: 90%;
+            height: 395px;
+            background: rgb(70,111,222);
+            background: linear-gradient(167deg, rgba(70,111,222,1) 28%, rgba(82,137,223,1) 48%);
+            border-radius:35px;
+            z-index: 1;
+            top: 70px;
+            .cloud{
+                ion-img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+                h3{
+                    color: #F2f2F2;
+                    font-family: "Mont-Semi-Bold";
+                    margin-bottom: 0px;
+                }
+                p{
+                    color: #F2f2F2;
+                    font-family: "Mont-Light";
+                    margin-top: 0px;
+                }
+
+            }
+            .temp2{
+                // background-color: aqua;
+                padding-top: 30px;
+                .haze{
+                    width: 145px;
+                    height: 112px;
+                    ion-img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+              
+                h1 {
+                    font-family: "Poppins-Bold";
+                    font-size: 4rem;
+                    color: #F2f2F2;
+                    margin-bottom: 0px;
+                }
+                span{
+                    font-family: "Mont-Light";
+                    color: #F2f2F2;
+                    margin-top: 0px;
+                }
+                
+            }
+            .details {
+                // background-color: blue;
+                position: absolute;
+                top: 269px;
+                width: 100%;
+                left: 13px;
+    
+                // left: 32px;
+                .card {
+                    background-color: #6993db;
+                    border-radius: 19px 28px 26px 13px;
+                    width: 80px;
+                    padding: 9px;
+                    height: 75px;
+    
+                    // margin: 1px 11px;
+                    ion-img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+    
+                    ion-text {
+                        // background-color: rgb(148, 88, 10);
+                        font-family: "Mont-Light";
+                        color: #F2f2F2;
+                        display: flex;
+                        justify-content: center;
+                    }
+                }
+    
+                .card2-img {
+                    // background-color: aqua;
+                    padding: 12px;
+                    height: 77px;
+                }
+            }
+            
+        }
+        .light-blue2{ 
+            position: absolute;
+            width: 90%;
+            height: 118px;
+            background: #466fde;
+            background: linear-gradient(180deg, #466fde 18%, rgba(82, 137, 223, 0.9556197479) 62%);
+            border-radius: 27px;
+            z-index: 1;
+            top: 494px;
+                .tom-weather{
+                    width: 100px;
+                    height: 91px;
+                    ion-img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    
+                }
+            }
+            h3{
+                font-family: "Mont-Semi-Bold";
+                color: #f2f2f2;
+                margin-top: 0px;
+            }
+            .date1{
+                font-family: "Mont-Semi-Bold";
+                color: #f2f2f2;
+            }
+            .day1{
+                font-family: "Mont-Light";
+                color: #f2f2f2;
+            }
+            .temp3{
+                font-family: "Mont-Light";
+                color: #f2f2f2;
+            }
+       
+            ion-button{
+                margin-top: 30px;
+                --background:#f2f2f2;
+                color: #466fde;
+                width: 56px;
+                height: 56px;
+                // width: 40px;
+                // height: 40px;                
+                --border-radius: 50px;
+                
+            }
+          
+        }
+    
+    }
+    .card{
+        height: 126px;
+        box-shadow: none;
+    }
+        .week-icon{
+            margin-top: 25px;
+            width: 39px;
+            height: 37px;
+        }
+        p.date{
+            font-size: 1.5rem;
+            color: rgb(62, 97, 219);
+            font-family: "Mont-Bold";
+            margin-bottom: 0px;
+            margin-top: 0px;
+    }
+    p.day{
+        color: rgb(62, 97, 219);
+        font-family: "Mont-Light";
+        margin: 0px;  
+        margin-bottom: 3px;      
+
+
+    }
+
 }
+}
+
+ 
