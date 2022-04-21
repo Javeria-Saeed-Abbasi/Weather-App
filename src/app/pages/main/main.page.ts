@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import Swiper, { SwiperOptions, Pagination} from 'swiper';
 import { ViewChild } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
+import { environment } from "../../../environments/environment";
+import { HttpClient } from "@angular/common/http";
+
+const API_KEY = environment.API_KEY;
+const API_URL = environment.API_URL;
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.page.html',
@@ -29,7 +35,10 @@ export class MainPage implements OnInit {
   };
  
   
-  constructor() {
+  constructor( public httpClient:HttpClient) {
+    //API
+    this.loadData();
+    
   //Item object for Food
   this.sliderTwo =
   {
@@ -66,8 +75,17 @@ export class MainPage implements OnInit {
       },
     ]
   };
+
+ 
    }
- //Move to Next slide
+     //For API
+   loadData(){
+     this.httpClient.get(`${API_URL}/weather?q=${"London"}&appid=${API_KEY}`).subscribe(results =>{
+      console.log(results);
+     })
+
+   }
+   //Move to Next slide
  slideNext(object, slideView) {
   slideView.slideNext(1000).then(() => {
     this.checkIfNavDisabled(object, slideView);
