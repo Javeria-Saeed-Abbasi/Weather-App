@@ -4,7 +4,7 @@
       <ion-back-button defaultHref="home">
       </ion-back-button>
     </ion-buttons>
-    <ion-title>Main</ion-title>
+    <ion-title class="ion-text-center">Main</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,15 +12,15 @@
   <div class="container">
     <div class="wrapper">
       <div class="place ion-justify-content-center ion-text-center">
-        <ion-label class="label1">London</ion-label><br />
-        <ion-label class="label2">Heavy Rain tonight</ion-label>
+        <ion-label class="label1">{{locationName}}</ion-label><br />
+        <ion-label class="label2">{{weatherDescp}}</ion-label>
       </div>
       <div class="temp1 ion-text-center">
-        <h1>27<span>&#176;</span></h1>
+        <h1>{{(weatherTemp?.temp - 273.15).toFixed(0)}}<span>&#176;</span></h1>
       </div>
       <div class="container moon">
         <div class="moon1">
-          <ion-img src="../../../assets/icons/moon/moon1.png"></ion-img>
+          <ion-img src={{weatherIcon1}}></ion-img>
         </div>
         <div class="container details">
           <ion-grid>
@@ -29,7 +29,7 @@
                 <div class="card">
                   <ion-img src="../../../assets/icons/moon/rain1.png" class="card-img-top" alt="..."></ion-img>
                   <div class="ion-margin-top">
-                    <ion-text class="">28%</ion-text>
+                    <ion-text class="">{{weatherTemp?.humidity}} %</ion-text>
                   </div>
                 </div>
               </ion-col>
@@ -37,7 +37,7 @@
                 <div class="card card2-img">
                   <ion-img src="../../../assets/icons/sun/sun1.png" class="card-img-top" alt="..."></ion-img>
                   <div class="ion-margin-top">
-                    <ion-text class="">8km/h</ion-text>
+                    <ion-text class="">{{(weatherSpeed?.speed).toFixed(0)}}km/h</ion-text>
                   </div>
                 </div>
               </ion-col>
@@ -131,12 +131,12 @@
                   (ionSlideDidChange)="SlideDidChange(sliderTwo,slideWithNav2)">
                   <ion-slide *ngFor="let s of sliderTwo.slidesItems">
                     <div class="card">
-                      <p>12:00</p>
+                      <p>{{today | date: "hh:mm"}}</p>
                       <div class="week-icon">
                         <!-- {{s.id}} -->
                         <ion-img src="{{s.img}}" alt=""></ion-img>
                       </div>
-                      <p>23<span>&#176;</span></p>
+                      <p>{{(weatherTemp?.temp - 273.15).toFixed(0)}}<span>&#176;</span></p>
                     </div>
 
                   </ion-slide>

@@ -22,7 +22,18 @@ export class MainPage implements OnInit {
   sliderOne: any;
   sliderTwo: any;
   sliderThree: any;
-
+//Open Weather API var
+  weatherTemp: any;
+  todayDate = new Date();
+  locationName: any;
+  weatherIcon1: any;
+  weatherDetails: any;
+  weatherDescp: any;
+  weatherSpeed: any;
+  speed: any;
+  weatherPercip: any;
+  percipit: any;
+  today = new Date();
   //Configuration for each Slider
 
   slideOptsTwo = {
@@ -34,10 +45,10 @@ export class MainPage implements OnInit {
     autoplay: true,
   };
  
-  
   constructor( public httpClient:HttpClient) {
-    //API
+    //Open Weather API
     this.loadData();
+    this.startTime();
     
   //Item object for Food
   this.sliderTwo =
@@ -76,15 +87,35 @@ export class MainPage implements OnInit {
     ]
   };
 
- 
    }
-     //For API
+     //Open Weather API
    loadData(){
-     this.httpClient.get(`${API_URL}/weather?q=${"London"}&appid=${API_KEY}`).subscribe(results =>{
+     this.httpClient.get(`${API_URL}/weather?q=${"Karachi"}&appid=${API_KEY}`).subscribe(results =>{
       console.log(results);
+      this.weatherTemp = results['main'],
+      this.locationName = results['name'],
+      this.weatherSpeed = results['wind'],
+      this.weatherDetails = results['weather'][0],
+      this.weatherIcon1 = `assets/icons/sun/27.png`,
+      this.weatherDescp = `${this.weatherDetails.description}`,
+      this.speed = `${this.weatherSpeed.speed}`
+      this.weatherPercip = results['precipitation'],
+      
+      console.log(this.locationName);
+      console.log(this.weatherTemp);
+      console.log(this.weatherDetails);
+      console.log(this.weatherIcon1);
+      console.log(this.weatherDescp);
+      console.log(this.weatherSpeed);
+      console.log(this.speed);
+      console.log(this.weatherPercip);
      })
 
    }
+   startTime() {
+    var intervalVar = setInterval(function () {
+      this.today = new Date().toISOString();
+    }.bind(this),500)};
    //Move to Next slide
  slideNext(object, slideView) {
   slideView.slideNext(1000).then(() => {

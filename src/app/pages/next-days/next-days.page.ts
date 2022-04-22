@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import Swiper, { SwiperOptions, Pagination} from 'swiper';
 import { ViewChild } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
+import { environment } from "../../../environments/environment";
+import { HttpClient } from "@angular/common/http";
+
+const API_KEY = environment.API_KEY;
+const API_URL = environment.API_URL;
 
 @Component({
   selector: 'app-next-days',
@@ -16,7 +21,18 @@ export class NextDaysPage implements OnInit {
   sliderOne: any;
   sliderTwo: any;
   sliderThree: any;
-
+//Open Weather API var
+weatherTemp: any;
+todayDate = new Date();
+locationName: any;
+weatherIcon1: any;
+weatherDetails: any;
+weatherDescp: any;
+weatherSpeed: any;
+speed: any;
+weatherPercip: any;
+percipit: any;
+today = new Date();
   //Configuration for each Slider
 
   slideOptsTwo = {
@@ -29,7 +45,11 @@ export class NextDaysPage implements OnInit {
   };
  
   
-  constructor() { 
+  constructor(public httpClient:HttpClient) { 
+    
+       //Open Weather API
+       this.loadData();
+       this.startTime();
     this.sliderTwo =
     {
       isBeginningSlide: true,
@@ -66,6 +86,34 @@ export class NextDaysPage implements OnInit {
       ]
     };
      }
+          //Open Weather API
+   loadData(){
+    this.httpClient.get(`${API_URL}/weather?q=${"Karachi"}&appid=${API_KEY}`).subscribe(results =>{
+     console.log(results);
+     this.weatherTemp = results['main'],
+     this.locationName = results['name'],
+     this.weatherSpeed = results['wind'],
+     this.weatherDetails = results['weather'][0],
+     this.weatherIcon1 = `assets/icons/sun/27.png`,
+     this.weatherDescp = `${this.weatherDetails.description}`,
+     this.speed = `${this.weatherSpeed.speed}`
+     this.weatherPercip = results['precipitation'],
+     
+     console.log(this.locationName);
+     console.log(this.weatherTemp);
+     console.log(this.weatherDetails);
+     console.log(this.weatherIcon1);
+     console.log(this.weatherDescp);
+     console.log(this.weatherSpeed);
+     console.log(this.speed);
+     console.log(this.weatherPercip);
+    })
+
+  }
+  startTime() {
+   var intervalVar = setInterval(function () {
+     this.today = new Date().toISOString();
+   }.bind(this),500)};
    //Move to Next slide
    slideNext(object, slideView) {
     slideView.slideNext(1000).then(() => {
