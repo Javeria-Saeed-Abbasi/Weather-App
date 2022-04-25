@@ -4,8 +4,11 @@
 
 export const environment = {
   production: false,
+  lat: 24.9056,
+  lon: 67.0822,
   API_KEY: '49bb38adef772301756a9afd8962771a',
-  API_URL: 'https://api.openweathermap.org/data/2.5/'
+  API_URL: 'https://api.openweathermap.org/data/2.5/',
+
 };
 
 /*

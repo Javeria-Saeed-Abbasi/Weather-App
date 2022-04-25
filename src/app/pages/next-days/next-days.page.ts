@@ -5,6 +5,7 @@ import { IonSlides } from '@ionic/angular';
 import { environment } from "../../../environments/environment";
 import { HttpClient } from "@angular/common/http";
 
+
 const API_KEY = environment.API_KEY;
 const API_URL = environment.API_URL;
 
@@ -32,8 +33,11 @@ weatherSpeed: any;
 speed: any;
 weatherPercip: any;
 percipit: any;
-today = new Date();
-  //Configuration for each Slider
+currentDate = new Date();
+currentDay = new Date();
+
+
+//Configuration for each Slider
 
   slideOptsTwo = {
     initialSlide:1,
@@ -41,7 +45,7 @@ today = new Date();
     loop: true,
     centeredSlides: true,
     spaceBetween: 10,
-    autoplay: true,
+    autoplay: false,
   };
  
   
@@ -49,8 +53,8 @@ today = new Date();
     
        //Open Weather API
        this.loadData();
-       this.startTime();
-    this.sliderTwo =
+     
+      this.sliderTwo =
     {
       isBeginningSlide: true,
       isEndSlide: false,
@@ -85,6 +89,7 @@ today = new Date();
         },
       ]
     };
+    
      }
           //Open Weather API
    loadData(){
@@ -110,10 +115,9 @@ today = new Date();
     })
 
   }
-  startTime() {
-   var intervalVar = setInterval(function () {
-     this.today = new Date().toISOString();
-   }.bind(this),500)};
+
+
+
    //Move to Next slide
    slideNext(object, slideView) {
     slideView.slideNext(1000).then(() => {

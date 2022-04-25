@@ -34,6 +34,7 @@ export class MainPage implements OnInit {
   weatherPercip: any;
   percipit: any;
   today = new Date();
+ 
   //Configuration for each Slider
 
   slideOptsTwo = {

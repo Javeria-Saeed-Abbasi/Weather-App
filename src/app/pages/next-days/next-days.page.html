@@ -37,8 +37,8 @@
                     <!-- {{s.id}} -->
                     <ion-img src="{{s.img}}" alt=""></ion-img>
                   </div>
-                  <p class="date"> <ion-datetime>{{today | date: "DDD"}}</ion-datetime></p>
-                  <p class="day">Mon</p>
+                  <p class="date">{{currentDate | date: "dd"}}</p>
+                  <p class="day">{{currentDay | date: "EEE dd MMMs "}}</p>
                 </div>
 
               </ion-slide>
