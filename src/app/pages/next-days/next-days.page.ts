@@ -4,11 +4,14 @@ import { ViewChild } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
 import { environment } from "../../../environments/environment";
 import { HttpClient } from "@angular/common/http";
+import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
 
 
 const API_KEY = environment.API_KEY;
 const API_URL = environment.API_URL;
-
+const latitude = environment.lat;
+const longitude = environment.lon;
 @Component({
   selector: 'app-next-days',
   templateUrl: './next-days.page.html',
@@ -116,7 +119,12 @@ currentDay = new Date();
 
   }
 
-
+   getWeatherData(): Observable<any> {
+    let lat= 33.44;
+    let lon = -94.04;
+    let queryString = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=minutley,hourly,daily,alerts&appid=${API_KEY}`;
+    return this.httpClient.get(queryString);
+  };
 
    //Move to Next slide
    slideNext(object, slideView) {

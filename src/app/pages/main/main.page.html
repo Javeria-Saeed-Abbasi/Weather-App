@@ -5,7 +5,7 @@
       </ion-back-button>
     </ion-buttons>
     <!-- Searchbar in a Toolbar -->
-  <ion-searchbar></ion-searchbar>
+  <ion-searchbar [(ngModel)]="locationName" (ngModelChange)="loadData()"></ion-searchbar>
     <!-- <ion-title class="ion-text-center">Main</ion-title> -->
   </ion-toolbar>
 </ion-header> 
@@ -13,152 +13,154 @@
 
 <ion-content>
   <div class="container">
-    <div class="wrapper">
-      <div class="place ion-justify-content-center ion-text-center">
-        <ion-label class="label1">{{locationName}}</ion-label><br />
-        <ion-label class="label2">{{weatherDescp}}</ion-label>
-      </div>
-      <div class="temp1 ion-text-center">
-        <h1>{{(weatherTemp?.temp - 273.15).toFixed(0)}}<span>&#176;</span></h1>
-      </div>
-      <div class="container moon">
-        <div class="moon1">
-          <ion-img src={{weatherIcon1}}></ion-img>
+ 
+      <div class="wrapper">
+        <div class="place ion-justify-content-center ion-text-center">
+          <ion-label class="label1">{{locationName}}</ion-label><br />
+          <ion-label class="label2">{{weatherDescp}}</ion-label>
         </div>
-        <div class="container details">
-          <ion-grid>
-            <ion-row class="">
-              <ion-col>
-                <div class="card">
-                  <ion-img src="../../../assets/icons/moon/rain1.png" class="card-img-top" alt="..."></ion-img>
-                  <div class="ion-margin-top">
-                    <ion-text class="">{{weatherTemp?.humidity}} %</ion-text>
-                  </div>
-                </div>
-              </ion-col>
-              <ion-col>
-                <div class="card card2-img">
-                  <ion-img src="../../../assets/icons/sun/sun1.png" class="card-img-top" alt="..."></ion-img>
-                  <div class="ion-margin-top">
-                    <ion-text class="">{{(weatherSpeed?.speed).toFixed(0)}}km/h</ion-text>
-                  </div>
-                </div>
-              </ion-col>
-              <ion-col>
-                <div class="card">
-                  <ion-img src="../../../assets/icons/moon/moon3.png" class="card-img-top" alt="..."></ion-img>
-                  <div class="ion-margin-top">
-                    <ion-text class="">64%</ion-text>
-                  </div>
-                </div>
-              </ion-col>
-
-            </ion-row>
-          </ion-grid>
+        <div class="temp1 ion-text-center">
+          <h1>{{(weatherTemp?.temp - 273.15).toFixed(0)}}<span>&#176;</span></h1>
         </div>
-      </div>
-      <div class="container today">
-        <ion-grid>
-          <ion-row>
-            <ion-col>
-              <ion-text>
-                <h3 class="ion-margin-start">Today</h3>
-              </ion-text>
-            </ion-col>
-            <ion-col>
-              <ion-text class="next">
-                <p class="ion-margin-start">Next 7 days</p>
-                <div class="ion-activatable ripple-parent">
-                  <ion-icon routerLink="/next-days" name="chevron-forward-outline" class="ion-justify-content-center">
-                  </ion-icon>
-                  <ion-ripple-effect></ion-ripple-effect>
-                </div>
-              </ion-text>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </div>
-      <div class="container week">
-        <!-- <ion-grid>
-          <ion-row>
-            <ion-col>
-              <div class="card">
-                <p>12:00</p>
-                <div class="week-icon">
-                  <ion-img src="../../../assets/icons/sun/8.png"></ion-img>
-                </div>
-                <p>23<span>&#176;</span></p>
-              </div>
-            </ion-col>
-            <ion-col>
-              <div class="card">
-                <p>12:00</p>
-                <div class="week-icon">
-                  <ion-img src="../../../assets/icons/cloud/18.png"></ion-img>
-                </div>
-                <p>23<span>&#176;</span></p>
-              </div>
-            </ion-col>
-            <ion-col>
-              <div class="card">
-                <p>12:00</p>
-                <div class="week-icon">
-                  <ion-img src="../../../assets/icons/sun/30.png"></ion-img>
-                </div>
-                <p>23<span>&#176;</span></p>
-              </div>
-            </ion-col>
-            <ion-col>
-              <div class="card">
-                <p>12:00</p>
-                <div class="week-icon">
-                  <ion-img src="../../../assets/icons/sun/26.png"></ion-img>
-                </div>
-                <p>23<span>&#176;</span></p>
-              </div>
-            </ion-col>
-          </ion-row>
-        </ion-grid> -->
-
-        <div class="new-swiper-slider">
+        <div class="container moon">
+          <div class="moon1">
+            <ion-img src={{weatherIcon1}}></ion-img>
+          </div>
+          <div class="container details">
+            <ion-grid>
+              <ion-row class="">
+                <ion-col>
+                  <div class="card">
+                    <ion-img src="../../../assets/icons/moon/rain1.png" class="card-img-top" alt="..."></ion-img>
+                    <div class="ion-margin-top">
+                      <ion-text class="">{{weatherTemp?.humidity}} %</ion-text>
+                    </div>
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div class="card card2-img">
+                    <ion-img src="../../../assets/icons/sun/sun1.png" class="card-img-top" alt="..."></ion-img>
+                    <div class="ion-margin-top">
+                      <ion-text class="">{{(weatherSpeed?.speed).toFixed(0)}}km/h</ion-text>
+                    </div>
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div class="card">
+                    <ion-img src="../../../assets/icons/moon/moon3.png" class="card-img-top" alt="..."></ion-img>
+                    <div class="ion-margin-top">
+                      <ion-text class="">64%</ion-text>
+                    </div>
+                  </div>
+                </ion-col>
+  
+              </ion-row>
+            </ion-grid>
+          </div>
+        </div>
+        <div class="container today">
           <ion-grid>
             <ion-row>
-              <ion-col size="1">
-                <span class="slider-nav arrow-prev" (click)="slidePrev(sliderTwo,slideWithNav2)">
-                  <div class="prev-icon-custom custon-nav" [class.disabled]="sliderTwo.isBeginningSlide"></div>
-                </span>
+              <ion-col>
+                <ion-text>
+                  <h3 class="ion-margin-start">Today</h3>
+                </ion-text>
               </ion-col>
-              <ion-col size="12">
-
-                <ion-slides pager="false" [options]="slideOptsTwo" #slideWithNav2
-                  (ionSlideDidChange)="SlideDidChange(sliderTwo,slideWithNav2)">
-                  <ion-slide *ngFor="let s of sliderTwo.slidesItems">
-                    <div class="card">
-                      <p>{{today | date: "hh:mm"}}</p>
-                      <div class="week-icon">
-                        <!-- {{s.id}} -->
-                        <ion-img src="{{s.img}}" alt=""></ion-img>
-                      </div>
-                      <p>{{(weatherTemp?.temp - 273.15).toFixed(0)}}<span>&#176;</span></p>
-                    </div>
-
-                  </ion-slide>
-                </ion-slides>
-
+              <ion-col>
+                <ion-text class="next">
+                  <p class="ion-margin-start">Next 7 days</p>
+                  <div class="ion-activatable ripple-parent">
+                    <ion-icon routerLink="/next-days" name="chevron-forward-outline" class="ion-justify-content-center">
+                    </ion-icon>
+                    <ion-ripple-effect></ion-ripple-effect>
+                  </div>
+                </ion-text>
               </ion-col>
-
-              <!-- <ion-col size="1">
-              <span class="slider-nav arrow-next" (click)="slideNext(sliderTwo,slideWithNav2)">
-                <div class="next-icon-custom custon-nav" [class.disabled]="sliderTwo.isEndSlide"></div>
-              </span>
-            </ion-col> -->
             </ion-row>
           </ion-grid>
-
         </div>
-      </div>
-
-
+        <div class="container week">
+          <!-- <ion-grid>
+            <ion-row>
+              <ion-col>
+                <div class="card">
+                  <p>12:00</p>
+                  <div class="week-icon">
+                    <ion-img src="../../../assets/icons/sun/8.png"></ion-img>
+                  </div>
+                  <p>23<span>&#176;</span></p>
+                </div>
+              </ion-col>
+              <ion-col>
+                <div class="card">
+                  <p>12:00</p>
+                  <div class="week-icon">
+                    <ion-img src="../../../assets/icons/cloud/18.png"></ion-img>
+                  </div>
+                  <p>23<span>&#176;</span></p>
+                </div>
+              </ion-col>
+              <ion-col>
+                <div class="card">
+                  <p>12:00</p>
+                  <div class="week-icon">
+                    <ion-img src="../../../assets/icons/sun/30.png"></ion-img>
+                  </div>
+                  <p>23<span>&#176;</span></p>
+                </div>
+              </ion-col>
+              <ion-col>
+                <div class="card">
+                  <p>12:00</p>
+                  <div class="week-icon">
+                    <ion-img src="../../../assets/icons/sun/26.png"></ion-img>
+                  </div>
+                  <p>23<span>&#176;</span></p>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid> -->
+  
+          <div class="new-swiper-slider">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="1">
+                  <span class="slider-nav arrow-prev" (click)="slidePrev(sliderTwo,slideWithNav2)">
+                    <div class="prev-icon-custom custon-nav" [class.disabled]="sliderTwo.isBeginningSlide"></div>
+                  </span>
+                </ion-col>
+                <ion-col size="12">
+  
+                  <ion-slides pager="false" [options]="slideOptsTwo" #slideWithNav2
+                    (ionSlideDidChange)="SlideDidChange(sliderTwo,slideWithNav2)">
+                    <ion-slide *ngFor="let s of sliderTwo.slidesItems">
+                      <div class="card">
+                        <p>{{today | date: "hh:mm"}}</p>
+                        <div class="week-icon">
+                          <!-- {{s.id}} -->
+                          <ion-img src="{{s.img}}" alt=""></ion-img>
+                        </div>
+                        <p>{{(weatherTemp?.temp - 273.15).toFixed(0)}}<span>&#176;</span></p>
+                      </div>
+  
+                    </ion-slide>
+                  </ion-slides>
+  
+                </ion-col>
+  
+                <!-- <ion-col size="1">
+                <span class="slider-nav arrow-next" (click)="slideNext(sliderTwo,slideWithNav2)">
+                  <div class="next-icon-custom custon-nav" [class.disabled]="sliderTwo.isEndSlide"></div>
+                </span>
+              </ion-col> -->
+              </ion-row>
+            </ion-grid>
+  
+          </div>
+        </div>
     </div>
+    <!-- <div *ngIf="loading">
+      <span>No data response</span>
+    </div> -->
   </div>
 </ion-content>

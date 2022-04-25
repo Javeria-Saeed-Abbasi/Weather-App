@@ -4,9 +4,12 @@ import { ViewChild } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
 import { environment } from "../../../environments/environment";
 import { HttpClient } from "@angular/common/http";
+import { Observable } from 'rxjs';
 
 const API_KEY = environment.API_KEY;
 const API_URL = environment.API_URL;
+const latitude = environment.lat;
+const longitude = environment.lon;
 
 @Component({
   selector: 'app-main',
@@ -25,7 +28,7 @@ export class MainPage implements OnInit {
 //Open Weather API var
   weatherTemp: any;
   todayDate = new Date();
-  locationName: any;
+  locationName: "";
   weatherIcon1: any;
   weatherDetails: any;
   weatherDescp: any;
@@ -34,7 +37,8 @@ export class MainPage implements OnInit {
   weatherPercip: any;
   percipit: any;
   today = new Date();
- 
+  name = "";
+  loading =  true;
   //Configuration for each Slider
 
   slideOptsTwo = {
@@ -46,9 +50,9 @@ export class MainPage implements OnInit {
     autoplay: true,
   };
  
-  constructor( public httpClient:HttpClient) {
+  constructor(public httpClient:HttpClient) {
     //Open Weather API
-    this.loadData();
+    // this.loadData();
     this.startTime();
     
   //Item object for Food
@@ -91,10 +95,11 @@ export class MainPage implements OnInit {
    }
      //Open Weather API
    loadData(){
-     this.httpClient.get(`${API_URL}/weather?q=${"Karachi"}&appid=${API_KEY}`).subscribe(results =>{
+     this.httpClient.get(`${API_URL}/weather?q=${this.locationName}&appid=${API_KEY}`).subscribe(results =>{
       console.log(results);
       this.weatherTemp = results['main'],
-      this.locationName = results['name'],
+      // this.locationName = results['name'],
+      this.name = results['name'],
       this.weatherSpeed = results['wind'],
       this.weatherDetails = results['weather'][0],
       this.weatherIcon1 = `assets/icons/sun/27.png`,
@@ -110,6 +115,7 @@ export class MainPage implements OnInit {
       console.log(this.weatherSpeed);
       console.log(this.speed);
       console.log(this.weatherPercip);
+      this.loading = false;
      })
 
    }
@@ -117,6 +123,7 @@ export class MainPage implements OnInit {
     var intervalVar = setInterval(function () {
       this.today = new Date().toISOString();
     }.bind(this),500)};
+ 
    //Move to Next slide
  slideNext(object, slideView) {
   slideView.slideNext(1000).then(() => {
