@@ -10,8 +10,9 @@ import { Injectable } from '@angular/core';
 
 const API_KEY = environment.API_KEY;
 const API_URL = environment.API_URL;
-const latitude = environment.lat;
-const longitude = environment.lon;
+//Open Weather 7days One CAll API var
+const lat = environment.lat;
+const lon = environment.lon;
 @Component({
   selector: 'app-next-days',
   templateUrl: './next-days.page.html',
@@ -25,7 +26,7 @@ export class NextDaysPage implements OnInit {
   sliderOne: any;
   sliderTwo: any;
   sliderThree: any;
-//Open Weather API var
+//Open Weather CURRENT API var
 weatherTemp: any;
 todayDate = new Date();
 locationName: any;
@@ -38,9 +39,29 @@ weatherPercip: any;
 percipit: any;
 currentDate = new Date();
 currentDay = new Date();
-
+//Open Weather 7days One CAll API var
+weatherTemp2:any;
+day0:any;
+day1:any;
+day2:any;
+day3:any;
+day4:any;
+day5:any;
+day6:any;
+day7:any;
+day0_temp:any;
+day1_temp:any;
+day2_temp:any;
+day3_temp:any;
+day4_temp:any;
+day5_temp:any;
+day6_temp:any;
+day7_temp:any;
 
 //Configuration for each Slider
+
+
+
 
   slideOptsTwo = {
     initialSlide:1,
@@ -54,9 +75,10 @@ currentDay = new Date();
   
   constructor(public httpClient:HttpClient) { 
     
-       //Open Weather API
+       //Open Weather Current API
        this.loadData();
-     
+         //Open Weather One Call API
+       this.getWeatherData();
       this.sliderTwo =
     {
       isBeginningSlide: true,
@@ -65,6 +87,7 @@ currentDay = new Date();
         {
           id: 324,
           img: "assets/icons/sun/sun1.png",
+          day: this.day0_temp,
         },
         {
           id: 321,
@@ -118,13 +141,54 @@ currentDay = new Date();
     })
 
   }
+  //Open Weather 7days One CAll API var
+  getWeatherData(){
+    this.httpClient.get(`${API_URL}/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=minutley,hourly,alerts&appid=${API_KEY}`).subscribe(res =>{
+      console.log(res);
+      this.weatherTemp2 = res['daily']
+      console.log(this.weatherTemp2);
+      this.day0 = this.weatherTemp2[0];
+      this.day0_temp = this.weatherTemp2[0].temp.day;
+      this.day1 = this.weatherTemp2[1].dt;
+      this.day1_temp = this.weatherTemp2[1].temp.day;
+      this.day2 = this.weatherTemp2[2].dt;
+      this.day2_temp = this.weatherTemp2[2].temp.day;
+      this.day3 = this.weatherTemp2[3].dt;
+      this.day3_temp = this.weatherTemp2[3].temp.day;
+      this.day4 = this.weatherTemp2[4].dt;
+      this.day4_temp = this.weatherTemp2[4].temp.day;
+      this.day5 = this.weatherTemp2[5].dt;
+      this.day5_temp = this.weatherTemp2[5].temp.day;
+      this.day6 = this.weatherTemp2[6].dt;
+      this.day6_temp = this.weatherTemp2[6].temp.day;
+      this.day7 = this.weatherTemp2[7].dt;
+      this.day7_temp = this.weatherTemp2[7].temp.day;
+      console.log(this.day0);
+      console.log(this.day0_temp);
+      console.log(this.day1);
+      console.log(this.day1_temp);
+      console.log(this.day2);
+      console.log(this.day2_temp);
+      console.log(this.day3);
+      console.log(this.day3_temp);
+      console.log(this.day4);
+      console.log(this.day4_temp);
+      console.log(this.day5);
+      console.log(this.day5_temp);
+      console.log(this.day6);
+      console.log(this.day6_temp);
+      console.log(this.day7);
+      console.log(this.day7_temp);
+    });
 
-   getWeatherData(): Observable<any> {
-    let lat= 33.44;
-    let lon = -94.04;
-    let queryString = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=minutley,hourly,daily,alerts&appid=${API_KEY}`;
-    return this.httpClient.get(queryString);
-  };
+   
+  }
+  //  getWeatherData(): Observable<any> {
+  //   let lat= 33.44;
+  //   let lon = -94.04;
+  //   let queryString = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=minutley,hourly,daily,alerts&appid=${API_KEY}`;
+  //   return this.httpClient.get(queryString);
+  // };
 
    //Move to Next slide
    slideNext(object, slideView) {
