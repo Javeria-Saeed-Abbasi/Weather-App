@@ -52,7 +52,7 @@ export class MainPage implements OnInit {
  
   constructor(public httpClient:HttpClient) {
     //Open Weather API
-    // this.loadData();
+    this.loadData();
     this.startTime();
     
   //Item object for Food
@@ -91,7 +91,7 @@ export class MainPage implements OnInit {
       },
     ]
   };
-
+  console.log(this.sliderTwo.slidesItems);
    }
      //Open Weather API
    loadData(){
@@ -102,7 +102,7 @@ export class MainPage implements OnInit {
       this.name = results['name'],
       this.weatherSpeed = results['wind'],
       this.weatherDetails = results['weather'][0],
-      this.weatherIcon1 = `assets/icons/sun/27.png`,
+      this.weatherIcon1 = `assets/images/sun/16.png`,
       this.weatherDescp = `${this.weatherDetails.description}`,
       this.speed = `${this.weatherSpeed.speed}`
       this.weatherPercip = results['precipitation'],
